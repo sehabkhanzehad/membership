@@ -1,94 +1,76 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<!doctype html>
+<html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Favicon icon-->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('assets') }}/images/logos/favicon.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
-    <!-- Core Css -->
-    <link rel="stylesheet" href="{{ asset('assets') }}/css/theme.css" />
-    <title>Sign-in</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign In</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-info/5">
-    <main>
-        <!-- Main Content -->
-        <div
-            class="flex flex-col w-full  overflow-hidden relative min-h-screen radial-gradient items-center justify-center g-0 px-4">
-
-            <div class="justify-center items-center w-full card lg:flex max-w-md ">
-                <div class=" w-full card-body">
-                    <a href="../" class="py-4 block"><img src="{{ asset('assets') }}/images/logos/dark-logo.svg"
-                            alt="" class="mx-auto" /></a>
-                    <p class="mb-4 text-gray-500 text-sm text-center">Your Social Campaigns</p>
-                    <!-- form -->
-                    <form>
-                        <!-- username -->
-                        <div class="mb-4">
-                            <label for="forUsername" class="block text-sm font-semibold mb-2 text-dark">Username</label>
-                            <input type="text" id="forUsername"
-                                class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0 "
-                                aria-describedby="hs-input-helper-text">
-                        </div>
-                        <!-- password -->
-                        <div class="mb-6">
-                            <label for="forPassword" class="block text-sm font-semibold mb-2 text-dark">Password</label>
-                            <input type="password" id="forPassword"
-                                class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0 "
-                                aria-describedby="hs-input-helper-text">
-                        </div>
-                        <!-- checkbox -->
-                        <div class="flex justify-between">
-                            <div class="flex">
-                                <input type="checkbox"
-                                    class="shrink-0 mt-0.5 border-gray-200 rounded-[4px] text-blue-600 focus:ring-blue-500 "
-                                    id="hs-default-checkbox" checked>
-                                <label for="hs-default-checkbox" class="text-sm text-dark ms-3">Remeber this
-                                    Device</label>
-                            </div>
-                            <a href="../" class="text-sm font-medium text-blue-600 hover:text-blue-700">Forgot
-                                Password ?</a>
-                        </div>
-                        <!-- button -->
-                        <div class="grid my-6">
-                            <a href="../"
-                                class="btn py-[10px] text-base text-white font-medium hover:bg-blue-700">Sign In</a>
-                        </div>
-
-                        <div class="flex justify-center gap-2 items-center">
-                            <p class="text-base font-medium text-gray-500">New to Modernize?</p>
-                            <a href="./authentication-register.html"
-                                class="text-sm font-medium text-blue-600 hover:text-blue-700">Create an account</a>
-                        </div>
-                </div>
-                </form>
+<body class="min-h-screen bg-gray-50">
+    <div class="flex min-h-screen items-center justify-center px-4">
+        <div class="w-full max-w-md">
+            <div class="text-center mb-8">
+                <a href="#" class="inline-flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-emerald-600" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-2h2Zm0-4h-2V7h2Z" />
+                    </svg>
+                    <span class="text-2xl font-bold text-gray-900">YourApp</span>
+                </a>
             </div>
+
+            <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-100">
+                <h1 class="text-xl font-semibold text-gray-900">Welcome back</h1>
+                <p class="mt-1 text-sm text-gray-500">Sign in to your account</p>
+
+                <form class="mt-6 space-y-4" action="dashboard.html" method="get">
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input id="email" name="email" type="email" required
+                            class="mt-1 w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-gray-900 placeholder-gray-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100"
+                            placeholder="you@example.com" />
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                            <a href="#"
+                                class="text-sm font-medium text-emerald-700 hover:text-emerald-800">Forgot?</a>
+                        </div>
+                        <input id="password" name="password" type="password" required
+                            class="mt-1 w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-gray-900 placeholder-gray-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100"
+                            placeholder="••••••••" />
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <input id="remember" name="remember" type="checkbox"
+                            class="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500" />
+                        <label for="remember" class="text-sm text-gray-700">Remember me</label>
+                    </div>
+
+                    <button type="submit" onclick="location.href={{ route('dashboard') }}"
+                        class="w-full rounded-xl bg-emerald-600 px-4 py-2.5 text-white font-semibold shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200">
+                        Sign In
+                    </button>
+                </form>
+
+                <p class="mt-6 text-center text-sm text-gray-600">
+                    Don’t have an account?
+                    <a href="#" class="font-medium text-emerald-700 hover:text-emerald-800">Create one</a>
+                </p>
+            </div>
+
+            <p class="mt-6 text-center text-xs text-gray-500">
+                © <span id="year"></span> YourApp. All rights reserved.
+            </p>
         </div>
+    </div>
 
-        </div>
-        <!--end of project-->
-    </main>
-
-
-
-    <script src="{{ asset('assets') }}/libs/jquery/dist/jquery.min.js"></script>
-    <script src="{{ asset('assets') }}/libs/simplebar/dist/simplebar.min.js"></script>
-    <script src="{{ asset('assets') }}/libs/iconify-icon/dist/iconify-icon.min.js"></script>
-    <script src="{{ asset('assets') }}/libs/preline/dist/preline.js"></script>
-    <script src="{{ asset('assets') }}/libs/@preline/dropdown/index.js"></script>
-    <script src="{{ asset('assets') }}/libs/@preline/overlay/index.js"></script>
-    <script src="{{ asset('assets') }}/js/sidebarmenu.js"></script>
-
-
-
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>
-F
