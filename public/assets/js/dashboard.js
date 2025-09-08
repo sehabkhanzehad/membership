@@ -1,532 +1,222 @@
-'use strict';
-
-(function() {
-
-  // JS global variables from app.js file 
-  const colors = window.config.colors;
-  const fontFamily = window.config.fontFamily;
-
-  const revenueChartData = [
-    49.33,
-    48.79,
-    50.61,
-    53.31,
-    54.78,
-    53.84,
-    54.68,
-    56.74,
-    56.99,
-    56.14,
-    56.56,
-    60.35,
-    58.74,
-    61.44,
-    61.11,
-    58.57,
-    54.72,
-    52.07,
-    51.09,
-    47.48,
-    48.57,
-    48.99,
-    53.58,
-    50.28,
-    46.24,
-    48.61,
-    51.75,
-    51.34,
-    50.21,
-    54.65,
-    52.44,
-    53.06,
-    57.07,
-    52.97,
-    48.72,
-    52.69,
-    53.59,
-    58.52,
-    55.10,
-    58.05,
-    61.35,
-    57.74,
-    60.27,
-    61.00,
-    57.78,
-    56.80,
-    58.90,
-    62.45,
-    58.75,
-    58.40,
-    56.74,
-    52.76,
-    52.30,
-    50.56,
-    55.40,
-    50.49,
-    52.49,
-    48.79,
-    47.46,
-    43.31,
-    38.96,
-    34.73,
-    31.03,
-    32.63,
-    36.89,
-    35.89,
-    32.74,
-    33.20,
-    30.82,
-    28.64,
-    28.44,
-    27.73,
-    27.75,
-    25.96,
-    24.38,
-    21.95,
-    22.08,
-    23.54,
-    27.30,
-    30.27,
-    27.25,
-    29.92,
-    25.14,
-    23.09,
-    23.79,
-    23.46,
-    27.99,
-    23.21,
-    23.91,
-    19.21,
-    15.13,
-    15.08,
-    11.00,
-    9.20,
-    7.47,
-    11.64,
-    15.76,
-    13.99,
-    12.59,
-    13.53,
-    15.01,
-    13.95,
-    13.23,
-    18.10,
-    20.63,
-    21.06,
-    25.37,
-    25.32,
-    20.94,
-    18.75,
-    15.38,
-    14.56,
-    17.94,
-    15.96,
-    16.35,
-    14.16,
-    12.10,
-    14.84,
-    17.24,
-    17.79,
-    14.03,
-    18.65,
-    18.46,
-    22.68,
-    25.08,
-    28.18,
-    28.03,
-    24.11,
-    24.28,
-    28.23,
-    26.24,
-    29.33,
-    26.07,
-    23.92,
-    28.82,
-    25.14,
-    21.79,
-    23.05,
-    20.71,
-    29.72,
-    30.21,
-    32.56,
-    31.46,
-    33.69,
-    30.05,
-    34.20,
-    36.93,
-    35.50,
-    34.78,
-    36.97
-  ];
-
-  const revenueChartCategories = [
-    "Jan 01 2024", "Jan 02 2024", "jan 03 2024", "Jan 04 2024", "Jan 05 2024", "Jan 06 2024", "Jan 07 2024", "Jan 08 2024", "Jan 09 2024", "Jan 10 2024", "Jan 11 2024", "Jan 12 2024", "Jan 13 2024", "Jan 14 2024", "Jan 15 2024", "Jan 16 2024", "Jan 17 2024", "Jan 18 2024", "Jan 19 2024", "Jan 20 2024","Jan 21 2024", "Jan 22 2024", "Jan 23 2024", "Jan 24 2024", "Jan 25 2024", "Jan 26 2024", "Jan 27 2024", "Jan 28 2024", "Jan 29 2024", "Jan 30 2024", "Jan 31 2024",
-    "Feb 01 2024", "Feb 02 2024", "Feb 03 2024", "Feb 04 2024", "Feb 05 2024", "Feb 06 2024", "Feb 07 2024", "Feb 08 2024", "Feb 09 2024", "Feb 10 2024", "Feb 11 2024", "Feb 12 2024", "Feb 13 2024", "Feb 14 2024", "Feb 15 2024", "Feb 16 2024", "Feb 17 2024", "Feb 18 2024", "Feb 19 2024", "Feb 20 2024","Feb 21 2024", "Feb 22 2024", "Feb 23 2024", "Feb 24 2024", "Feb 25 2024", "Feb 26 2024", "Feb 27 2024", "Feb 28 2024",
-    "Mar 01 2024", "Mar 02 2024", "Mar 03 2024", "Mar 04 2024", "Mar 05 2024", "Mar 06 2024", "Mar 07 2024", "Mar 08 2024", "Mar 09 2024", "Mar 10 2024", "Mar 11 2024", "Mar 12 2024", "Mar 13 2024", "Mar 14 2024", "Mar 15 2024", "Mar 16 2024", "Mar 17 2024", "Mar 18 2024", "Mar 19 2024", "Mar 20 2024","Mar 21 2024", "Mar 22 2024", "Mar 23 2024", "Mar 24 2024", "Mar 25 2024", "Mar 26 2024", "Mar 27 2024", "Mar 28 2024", "Mar 29 2024", "Mar 30 2024", "Mar 31 2024",
-    "Apr 01 2024", "Apr 02 2024", "Apr 03 2024", "Apr 04 2024", "Apr 05 2024", "Apr 06 2024", "Apr 07 2024", "Apr 08 2024", "Apr 09 2024", "Apr 10 2024", "Apr 11 2024", "Apr 12 2024", "Apr 13 2024", "Apr 14 2024", "Apr 15 2024", "Apr 16 2024", "Apr 17 2024", "Apr 18 2024", "Apr 19 2024", "Apr 20 2024","Apr 21 2024", "Apr 22 2024", "Apr 23 2024", "Apr 24 2024", "Apr 25 2024", "Apr 26 2024", "Apr 27 2024", "Apr 28 2024", "Apr 29 2024", "Apr 30 2024",
-    "May 01 2024", "May 02 2024", "May 03 2024", "May 04 2024", "May 05 2024", "May 06 2024", "May 07 2024", "May 08 2024", "May 09 2024", "May 10 2024", "May 11 2024", "May 12 2024", "May 13 2024", "May 14 2024", "May 15 2024", "May 16 2024", "May 17 2024", "May 18 2024", "May 19 2024", "May 20 2024","May 21 2024", "May 22 2024", "May 23 2024", "May 24 2024", "May 25 2024", "May 26 2024", "May 27 2024", "May 28 2024", "May 29 2024", "May 30 2024",
-  ]
+$(function () {
 
 
-
-
-
-  // Date Picker
-  if (document.querySelector('#dashboardDate')) {
-    flatpickr("#dashboardDate", {
-      wrap: true,
-      dateFormat: "d-M-Y",
-      defaultDate: "today",
-    });
-  }
-  // Date Picker - END
-
-
-
-
-
-  // New Customers Chart
-  const customersChartElement = document.querySelector('#customersChart');
-  if (customersChartElement) {
-    const customersChartOptions = {
-      chart: {
-        type: "line",
-        height: 60,
-        sparkline: {
-          enabled: !0
-        }
-      },
-      series: [{
-        name: '',
-        data: [3844, 3855, 3841, 3867, 3822, 3843, 3821, 3841, 3856, 3827, 3843]
-      }],
-      xaxis: {
-        type: 'datetime',
-        categories: ["Jan 01 2024", "Jan 02 2024", "Jan 03 2024", "Jan 04 2024", "Jan 05 2024", "Jan 06 2024", "Jan 07 2024", "Jan 08 2024", "Jan 09 2024", "Jan 10 2024", "Jan 11 2024",],
-      },
-      stroke: {
-        width: 2,
-        curve: "smooth"
-      },
-      markers: {
-        size: 0
-      },
-      colors: [colors.primary],
-    };
-    const customersChart = new ApexCharts(customersChartElement, customersChartOptions);
-    customersChart.render();
-  }
-  // New Customers Chart - END
-
-
-
-
-  // Orders Chart
-  const ordersChartElement = document.querySelector('#ordersChart');
-  if (ordersChartElement) {
-    const ordersChartOptions = {
+    // =====================================
+    // Profit
+    // =====================================
+    var chart = {
+      series: [
+        { name: "Earnings this month:", data: [355, 390, 300, 350, 390, 180, 355, 390] },
+        { name: "Expense this month:", data: [280, 250, 325, 215, 250, 310, 280, 250] },
+      ],
+  
       chart: {
         type: "bar",
-        height: 60,
-        sparkline: {
-          enabled: !0
-        }
+        height: 352,
+        offsetX: -15,
+        toolbar: { show: true },
+        foreColor: "#adb0bb",
+        fontFamily: 'inherit',
+        sparkline: { enabled: false },
       },
+  
+  
+      colors: ["#5D87FF", "#49BEFF"],
+  
+  
       plotOptions: {
         bar: {
-          borderRadius: 2,
-          columnWidth: "60%"
-        }
+          horizontal: false,
+          columnWidth: "35%",
+          borderRadius: [6],
+          borderRadiusApplication: 'end',
+          borderRadiusWhenStacked: 'all'
+        },
       },
-      colors: [colors.primary],
-      series: [{
-        name: '',
-        data: [36, 77, 52, 90, 74, 35, 55, 23, 47, 10, 63]
-      }],
+      markers: { size: 0 },
+  
+      dataLabels: {
+        enabled: false,
+      },
+  
+  
+      legend: {
+        show: false,
+      },
+  
+  
+      grid: {
+        borderColor: "rgba(0,0,0,0.1)",
+        strokeDashArray: 3,
+        xaxis: {
+          lines: {
+            show: false,
+          },
+        },
+      },
+  
       xaxis: {
-        type: 'datetime',
-        categories: ["Jan 01 2024", "Jan 02 2024", "Jan 03 2024", "Jan 04 2024", "Jan 05 2024", "Jan 06 2024", "Jan 07 2024", "Jan 08 2024", "Jan 09 2024", "Jan 10 2024", "Jan 11 2024",],
+        type: "category",
+        categories: ["16/08", "17/08", "18/08", "19/08", "20/08", "21/08", "22/08", "23/08"],
+        labels: {
+          style: { cssClass: "grey--text lighten-2--text fill-color" },
+        },
       },
-    };
-    const ordersChart = new ApexCharts(ordersChartElement, ordersChartOptions);
-    ordersChart.render();
-  }
-  // Orders Chart - END
-
-
-
-
-  // Growth Chart
-  const growthChartElement = document.querySelector('#growthChart');
-  if (growthChartElement) {
-    const growthChartOptions = {
-      chart: {
-        type: "line",
-        height: 60,
-        sparkline: {
-          enabled: !0
-        }
-      },
-      series: [{
-        name: '',
-        data: [41, 45, 44, 46, 52, 54, 43, 74, 82, 82, 89]
-      }],
-      xaxis: {
-        type: 'datetime',
-        categories: ["Jan 01 2024", "Jan 02 2024", "Jan 03 2024", "Jan 04 2024", "Jan 05 2024", "Jan 06 2024", "Jan 07 2024", "Jan 08 2024", "Jan 09 2024", "Jan 10 2024", "Jan 11 2024",],
+  
+  
+      yaxis: {
+        show: true,
+        min: 0,
+        max: 400,
+        tickAmount: 4,
+        labels: {
+          style: {
+            cssClass: "grey--text lighten-2--text fill-color",
+          },
+        },
       },
       stroke: {
-        width: 2,
-        curve: "smooth"
+        show: true,
+        width: 3,
+        lineCap: "butt",
+        colors: ["transparent"],
       },
-      markers: {
-        size: 0
-      },
-      colors: [colors.primary],
-    };
-    const growthChart = new ApexCharts(growthChartElement, growthChartOptions);
-    growthChart.render();
-  }
-  // Growth Chart - END
-
-
-
-
-    // Revenue Chart
-    const revenueChartElement = document.querySelector('#revenueChart');
-    if (revenueChartElement) {
-      const revenueChartOptions = {
-        chart: {
-          type: "line",
-          height: '400',
-          parentHeightOffset: 0,
-          foreColor: colors.secondary,
-          toolbar: {
-            show: false
-          },
-        },
-        colors: [colors.primary, colors.danger, colors.warning],
-        grid: {
-          padding: {
-            bottom: -4,
-          },
-          borderColor: colors.gridBorder,
-          xaxis: {
-            lines: {
-              show: true
-            }
+  
+  
+      tooltip: { theme: "light" },
+  
+      responsive: [
+        {
+          breakpoint: 1400,
+          options: {
+            plotOptions: {
+              bar: {
+                borderRadius: [5],
+              }
+            },
           }
         },
-        series: [
-          {
-            name: "Revenue",
-            data: revenueChartData
-          },
-        ],
-        xaxis: {
-          type: "datetime",
-          categories: revenueChartCategories,
-          lines: {
-            show: true
-          },
-          axisBorder: {
-            color: colors.gridBorder,
-          },
-          axisTicks: {
-            color: colors.gridBorder,
-          },
-          crosshairs: {
-            stroke: {
-              color: colors.secondary,
+        {
+          breakpoint: 600,
+          options: {
+            plotOptions: {
+              bar: {
+                borderRadius: [3],
+              }
             },
-          },
+          }
         },
-        yaxis: {
-          title: {
-            text: 'Revenue ( $1000 x )',
-            style:{
-              size: 9,
-              color: colors.secondary
-            }
-          },
-          tickAmount: 4,
-          tooltip: {
-            enabled: true
-          },
-          crosshairs: {
-            stroke: {
-              color: colors.secondary,
-            },
-          },
-        },
-        markers: {
-          size: 0,
-        },
-        stroke: {
-          width: 2,
-          curve: "straight",
-        },
-      };
-      const revenueChart = new ApexCharts(revenueChartElement, revenueChartOptions);
-      revenueChart.render();
-    }
-    // Revenue Chart - END
 
-
-
-
-
-  // Monthly Sales Chart
-  const monthlySalesChartElement = document.querySelector('#monthlySalesChart');
-  if (monthlySalesChartElement) {
-    const monthlySalesChartOptions = {
+      ]
+  
+  
+    };
+  
+    var chart = new ApexCharts(document.querySelector("#chart"), chart);
+    chart.render();
+  
+  
+    // =====================================
+    // Breakup
+    // =====================================
+    var breakup = {
+      color: "#adb5bd",
+      series: [38, 40, 25],
+      labels: ["2022", "2021", "2020"],
       chart: {
-        type: 'bar',
-        height: '318',
-        parentHeightOffset: 0,
-        foreColor: colors.secondary,
-        toolbar: {
-          show: false
+        width: 180,
+        type: "donut",
+        fontFamily: "Plus Jakarta Sans', sans-serif",
+        foreColor: "#adb0bb",
+      },
+      plotOptions: {
+        pie: {
+          startAngle: 0,
+          endAngle: 360,
+          donut: {
+            size: '75%',
+          },
         },
       },
-      theme: {
-        mode: 'light'
+      stroke: {
+        show: false,
+      },
+  
+      dataLabels: {
+        enabled: false,
+      },
+  
+      legend: {
+        show: false,
+      },
+      colors: ["#5D87FF", "#ecf2ff", "#F9F9FD"],
+  
+      responsive: [
+        {
+          breakpoint: 991,
+          options: {
+            chart: {
+              width: 150,
+            },
+          },
+        },
+      ],
+      tooltip: {
+        theme: "dark",
+        fillSeriesColor: false,
+      },
+    };
+  
+    var chart = new ApexCharts(document.querySelector("#breakup"), breakup);
+    chart.render();
+  
+  
+  
+    // =====================================
+    // Earning
+    // =====================================
+    var earning = {
+      chart: {
+        id: "sparkline3",
+        type: "area",
+        height: 60,
+        sparkline: {
+          enabled: true,
+        },
+        group: "sparklines",
+        fontFamily: "Plus Jakarta Sans', sans-serif",
+        foreColor: "#adb0bb",
+      },
+      series: [
+        {
+          name: "Earnings",
+          color: "#49BEFF",
+          data: [25, 66, 20, 40, 12, 58, 20],
+        },
+      ],
+      stroke: {
+        curve: "smooth",
+        width: 2,
+      },
+      fill: {
+        colors: ["#f3feff"],
+        type: "solid",
+        opacity: 0.05,
+      },
+  
+      markers: {
+        size: 0,
       },
       tooltip: {
-        theme: 'light'
-      },
-      colors: [colors.primary],  
-      fill: {
-        opacity: .9
-      } , 
-      grid: {
-        padding: {
-          bottom: -4
+        theme: "dark",
+        fixed: {
+          enabled: true,
+          position: "right",
         },
-        borderColor: colors.gridBorder,
-        xaxis: {
-          lines: {
-            show: true
-          }
-        }
-      },
-      series: [{
-        name: 'Sales',
-        data: [152,109,93,113,126,161,188,143,102,113,116,124]
-      }],
-      xaxis: {
-        type: 'datetime',
-        categories: ['01/01/2024','02/01/2024','03/01/2024','04/01/2024','05/01/2024','06/01/2024','07/01/2024', '08/01/2024','09/01/2024','10/01/2024', '11/01/2024', '12/01/2024'],
-        axisBorder: {
-          color: colors.gridBorder,
-        },
-        axisTicks: {
-          color: colors.gridBorder,
+        x: {
+          show: false,
         },
       },
-      yaxis: {
-        title: {
-          text: 'Number of Sales',
-          style:{
-            size: 9,
-            color: colors.secondary
-          }
-        },
-      },
-      legend: {
-        show: true,
-        position: "top",
-        horizontalAlign: 'center',
-        fontFamily: fontFamily,
-        itemMargin: {
-          horizontal: 8,
-          vertical: 0
-        },
-      },
-      stroke: {
-        width: 0
-      },
-      dataLabels: {
-        enabled: true,
-        style: {
-          fontSize: '10px',
-          fontFamily: fontFamily,
-        },
-        offsetY: -27
-      },
-      plotOptions: {
-        bar: {
-          columnWidth: "50%",
-          borderRadius: 4,
-          dataLabels: {
-            position: 'top',
-            orientation: 'vertical',
-          }
-        },
-      },
-    }
-    
-    const monthlySalesChart = new ApexCharts(monthlySalesChartElement, monthlySalesChartOptions);
-    monthlySalesChart.render();
-  }
-  // Monthly Sales Chart - END
-
-
-
-
-
-  // Cloud Storage Chart
-  const storageChartElement = document.querySelector('#storageChart');
-  if (storageChartElement) {
-    const storageChartOptions = {
-      chart: {
-        height: 260,
-        type: "radialBar"
-      },
-      series: [67],
-      colors: [colors.primary],
-      plotOptions: {
-        radialBar: {
-          hollow: {
-            margin: 15,
-            size: "70%"
-          },
-          track: {
-            show: true,
-            background: colors.gridBorder,
-            strokeWidth: '100%',
-            opacity: 1,
-            margin: 5, 
-          },
-          dataLabels: {
-            showOn: "always",
-            name: {
-              offsetY: -11,
-              show: true,
-              color: colors.secondary,
-              fontSize: "13px"
-            },
-            value: {
-              color: colors.secondary,
-              fontSize: "30px",
-              show: true
-            }
-          }
-        }
-      },
-      fill: {
-        opacity: 1
-      },
-      stroke: {
-        lineCap: "round",
-      },
-      labels: ["Storage Used"]
     };
-    
-    const storageChart = new ApexCharts(storageChartElement, storageChartOptions);
-    storageChart.render();    
-  }
-  // Cloud Storage Chart - END
-
-
-})();
+    new ApexCharts(document.querySelector("#earning"), earning).render();
+  })

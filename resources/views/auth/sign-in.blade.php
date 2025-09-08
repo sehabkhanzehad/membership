@@ -1,136 +1,94 @@
 <!DOCTYPE html>
-<!--
-Template Name: NobleUI - HTML Bootstrap 5 Admin Dashboard Template
-Author: NobleUI
-Website: https://www.nobleui.com
-Portfolio: https://themeforest.net/user/nobleui/portfolio
-Contact: nobleui123@gmail.com
-Purchase: https://1.envato.market/nobleui_admin
-License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
--->
-<html lang="en">
-
-<!-- Mirrored from www.nobleui.com/html/template/demo1/pages/auth/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Oct 2024 09:00:17 GMT -->
+<html lang="en" dir="ltr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
-    <meta name="author" content="NobleUI">
-    <meta name="keywords"
-        content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>NobleUI - HTML Bootstrap 5 Admin Dashboard Template</title>
-
-    <!-- color-modes:js -->
-    <script src="{{ asset('assets') }}/js/color-modes.js"></script>
-    <!-- endinject -->
-
-    <!-- Fonts -->F
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;display=swap"
-        rel="stylesheet">
-    <!-- End fonts -->
-
-    <!-- core:css -->
-    <link rel="stylesheet" href="{{ asset('assets') }}/vendors/core/core.css">
-    <!-- endinject -->
-
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-
-    <!-- inject:css -->
-    <link rel="stylesheet" href="{{ asset('assets') }}/fonts/feather-font/css/iconfont.css">
-    <!-- endinject -->
-
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="{{ asset('assets') }}/css/demo1/style.css">
-    <!-- End layout styles -->
-
-    <link rel="shortcut icon" href="{{ asset('assets') }}/images/favicon.png" />
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets') }}/images/logos/favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+    <!-- Core Css -->
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/theme.css" />
+    <title>Sign-in</title>
 </head>
 
-<body>
-    <div class="main-wrapper">
-        <div class="page-wrapper full-page">
-            <div class="page-content d-flex align-items-center justify-content-center">
+<body class="bg-info/5">
+    <main>
+        <!-- Main Content -->
+        <div
+            class="flex flex-col w-full  overflow-hidden relative min-h-screen radial-gradient items-center justify-center g-0 px-4">
 
-                <div class="row w-100 mx-0 auth-page">
-                    <div class="col-md-10 col-lg-8 col-xl-6 mx-auto">
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-md-4 pe-md-0">
-                                    <div class="auth-side-wrapper">
-
-                                    </div>
-                                </div>
-                                <div class="col-md-8 ps-md-0">
-                                    <div class="auth-form-wrapper px-4 py-5">
-                                        <a href="#" class="nobleui-logo d-block mb-2">Noble<span>UI</span></a>
-                                        <h5 class="text-secondary fw-normal mb-4">Welcome back! Log in to your account.
-                                        </h5>
-
-                                        @if ($errors->has('login'))
-                                            <div class="alert alert-danger">
-                                                 {{$errors->first('login')}} </div>
-                                        @endif
-
-                                        <form class="forms-sample" method="POST" action="{{ route('user.sign-In') }}" >
-                                            @csrf
-                                            <div class="mb-3">
-                                                <label for="userEmail" class="form-label">Email address</label>
-                                                <input type="email" name="email" class="form-control" id="userEmail"
-                                                    placeholder="Email">
-                                                @error('email')
-                                                    <p class="text-danger"> {{$message}} </p>
-                                                @enderror
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="userPassword" class="form-label">Password</label>
-                                                <input type="password" name="password" class="form-control" id="userPassword"
-                                                    autocomplete="current-password" placeholder="Password">
-                                                @error('password')
-                                                    <p class="text-danger"> {{$message}} </p>
-                                                @enderror
-                                            </div>
-
-                                            <div>
-                                                <button class="btn btn-primary me-2 mb-2 mb-md-0 text-white">Login</button>
-                                            </div>
-                                            <a href="{{ route('user.signUp') }}" class="d-block mt-3 text-secondary">Not a user? Sign
-                                                up</a>
-                                        </form>
-
-                                    </div>
-                                </div>
-                            </div>
+            <div class="justify-center items-center w-full card lg:flex max-w-md ">
+                <div class=" w-full card-body">
+                    <a href="../" class="py-4 block"><img src="{{ asset('assets') }}/images/logos/dark-logo.svg"
+                            alt="" class="mx-auto" /></a>
+                    <p class="mb-4 text-gray-500 text-sm text-center">Your Social Campaigns</p>
+                    <!-- form -->
+                    <form>
+                        <!-- username -->
+                        <div class="mb-4">
+                            <label for="forUsername" class="block text-sm font-semibold mb-2 text-dark">Username</label>
+                            <input type="text" id="forUsername"
+                                class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0 "
+                                aria-describedby="hs-input-helper-text">
                         </div>
-                    </div>
-                </div>
+                        <!-- password -->
+                        <div class="mb-6">
+                            <label for="forPassword" class="block text-sm font-semibold mb-2 text-dark">Password</label>
+                            <input type="password" id="forPassword"
+                                class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0 "
+                                aria-describedby="hs-input-helper-text">
+                        </div>
+                        <!-- checkbox -->
+                        <div class="flex justify-between">
+                            <div class="flex">
+                                <input type="checkbox"
+                                    class="shrink-0 mt-0.5 border-gray-200 rounded-[4px] text-blue-600 focus:ring-blue-500 "
+                                    id="hs-default-checkbox" checked>
+                                <label for="hs-default-checkbox" class="text-sm text-dark ms-3">Remeber this
+                                    Device</label>
+                            </div>
+                            <a href="../" class="text-sm font-medium text-blue-600 hover:text-blue-700">Forgot
+                                Password ?</a>
+                        </div>
+                        <!-- button -->
+                        <div class="grid my-6">
+                            <a href="../"
+                                class="btn py-[10px] text-base text-white font-medium hover:bg-blue-700">Sign In</a>
+                        </div>
 
+                        <div class="flex justify-center gap-2 items-center">
+                            <p class="text-base font-medium text-gray-500">New to Modernize?</p>
+                            <a href="./authentication-register.html"
+                                class="text-sm font-medium text-blue-600 hover:text-blue-700">Create an account</a>
+                        </div>
+                </div>
+                </form>
             </div>
         </div>
-    </div>
 
-    <!-- core:js -->
-    <script src="{{ asset('assets') }}/vendors/core/core.js"></script>
-    <!-- endinject -->
+        </div>
+        <!--end of project-->
+    </main>
 
-    <!-- Plugin js for this page -->
-    <!-- End plugin js for this page -->
 
-    <!-- inject:js -->
-    <script src="{{ asset('assets') }}/vendors/feather-icons/feather.min.js"></script>
-    <script src="{{ asset('assets') }}/js/app.js"></script>
-    <!-- endinject -->
 
-    <!-- Custom js for this page -->
-    <!-- End custom js for this page -->
+    <script src="{{ asset('assets') }}/libs/jquery/dist/jquery.min.js"></script>
+    <script src="{{ asset('assets') }}/libs/simplebar/dist/simplebar.min.js"></script>
+    <script src="{{ asset('assets') }}/libs/iconify-icon/dist/iconify-icon.min.js"></script>
+    <script src="{{ asset('assets') }}/libs/preline/dist/preline.js"></script>
+    <script src="{{ asset('assets') }}/libs/@preline/dropdown/index.js"></script>
+    <script src="{{ asset('assets') }}/libs/@preline/overlay/index.js"></script>
+    <script src="{{ asset('assets') }}/js/sidebarmenu.js"></script>
+
+
 
 </body>
 
-<!-- Mirrored from www.nobleui.com/html/template/demo1/pages/auth/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Oct 2024 09:00:17 GMT -->
-
 </html>
+F
