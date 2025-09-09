@@ -24,7 +24,7 @@
     </section>
 
     <!-- Users table -->
-    <section id="users" class="mt-8">
+    {{-- <section id="users" class="mt-8">
         <div class="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 class="text-lg font-semibold text-gray-900">Users</h2>
             <div class="flex items-center gap-2">
@@ -152,5 +152,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection

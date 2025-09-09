@@ -20,7 +20,7 @@
 			<main class="px-4 py-6">
 				@yield('content')
 			</main>
-			@include('components.footer')
+			{{-- @include('components.footer') --}}
 		</div>
 	</div>
 	@include('components.scripts')
