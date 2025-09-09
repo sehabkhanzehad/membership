@@ -18,8 +18,8 @@
                     class="w-full rounded-xl border border-gray-200 bg-white pl-10 pr-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100" />
             </div>
             <div class="flex items-center space-x-4">
-                <button
-                    class="rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-emerald-500 transition">Collect</button>
+                <a href="{{ route('collect') }}"
+                    class="rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-emerald-500 transition">Collect</a>
                 <div class="relative">
                     <button id="userMenuBtn"
                         class="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-2.5 py-1.5 hover:bg-gray-50 transition">

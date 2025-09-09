@@ -74,6 +74,7 @@
                             <div class="inline-flex items-center gap-2">
                                 <button class="rounded-lg border border-gray-200 px-2.5 py-1.5 text-sm hover:bg-gray-50">Edit</button>
                                 <button class="rounded-lg border border-gray-200 px-2.5 py-1.5 text-sm hover:bg-gray-50">Disable</button>
+                                <a href="/collect" class="rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-emerald-500 transition">Collect</a>
                             </div>
                         </td>
                     </tr>

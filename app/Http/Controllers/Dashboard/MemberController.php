@@ -12,8 +12,15 @@ class MemberController extends Controller
     public function index()
     {
         $members = User::whereRole(UserRole::Member)->get();
-        return view('dashboard.members.index', [
+        return view('dashboard.member.index', [
             'members' => $members
+        ]);
+    }
+
+    public function show(User $member)
+    {
+        return view('dashboard.member.show', [
+            'member' => $member->load('payments.year')
         ]);
     }
 }

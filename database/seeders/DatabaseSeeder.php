@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Year;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,12 +14,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        foreach (range(2022, 2030) as $year) {
+            Year::create(['year' => $year]);
+        }
+
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@email.com',
+            'password' => 'password',
+            'role' => 'admin',
+        ]);
+
+        User::create([
+            'name' => 'Rasel',
+            'email' => 'rasel@email.com',
+            'password' => 'password',
+            'role' => 'collector',
+        ]);
 
         $this->call([
             MemberSeeder::class

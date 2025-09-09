@@ -17,4 +17,9 @@ enum Month: string
     case November = 'November';
     case December = 'December';
     case Other = 'Other';
+
+    public static function values()
+    {
+        return array_column(static::cases(), 'value');
+    }
 }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('amount')->default(100);
             $table->string('receipt_no')->unique();
             $table->foreignId('collected_by')->constrained('users')->restrictOnDelete();
+            $table->date('collection_at');
             $table->timestamps();
 
             $table->unique(['user_id', 'year_id', 'month']); // prevent duplicate payment for same month
