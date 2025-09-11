@@ -13,6 +13,11 @@ class Payment extends Model
 
     protected $guarded = ['id'];
 
+    public function receipt()
+    {
+        return $this->belongsTo(Receipt::class, 'receipt_id');
+    }
+
     public function collector()
     {
         return $this->belongsTo(User::class, 'collected_by');

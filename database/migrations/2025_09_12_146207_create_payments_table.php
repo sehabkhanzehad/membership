@@ -16,12 +16,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('year_id')->constrained()->restrictOnDelete();
             $table->string('month'); // e.g., 'January', 'February', etc.
-            $table->integer('amount')->default(100);
-            $table->string('receipt_no')->unique();
+            $table->decimal('amount', 10, 2);
+            $table->foreignId('receipt_id')->constrained()->cascadeOnDelete();
             $table->foreignId('collected_by')->constrained('users')->restrictOnDelete();
-            $table->date('collection_at');
             $table->timestamps();
-
             $table->unique(['user_id', 'year_id', 'month']); // prevent duplicate payment for same month
         });
     }

@@ -22,4 +22,9 @@ enum Month: string
     {
         return array_column(static::cases(), 'value');
     }
+
+    public static function only(array $months = [])
+    {
+        return array_filter(static::cases(), fn($case) => in_array($case->value, $months));
+    }
 }
