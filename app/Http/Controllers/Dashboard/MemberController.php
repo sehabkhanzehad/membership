@@ -20,7 +20,7 @@ class MemberController extends Controller
     public function show(User $member)
     {
         return view('dashboard.member.show', [
-            'member' => $member->load('payments.year')
+            'member' => $member->load("payments.year", "payments.receipt")
         ]);
     }
 }

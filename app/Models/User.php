@@ -38,6 +38,11 @@ class User extends Authenticatable
         'role' => \App\Enums\UserRole::class,
     ];
 
+    public function receipts()
+    {
+        return $this->hasMany(Receipt::class);
+    }
+
     public function payments()
     {
         return $this->hasMany(Payment::class, 'user_id', 'id');

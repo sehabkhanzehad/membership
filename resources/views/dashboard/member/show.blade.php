@@ -36,9 +36,9 @@
                             <td class="px-4 py-2">{{ $payment->year->year }}</td>
                             <td class="px-4 py-2">{{ $payment->month }}</td>
                             <td class="px-4 py-2">{{ $payment->amount }}</td>
-                            <td class="px-4 py-2">{{ $payment->receipt_no }}</td>
+                            <td class="px-4 py-2">{{ $payment->receipt->receipt_no }}</td>
                             {{-- <td class="px-4 py-2">{{ $payment->collected_by }}</td> --}}
-                            <td class="px-4 py-2">{{ $payment->collection_at }}</td>
+                            <td class="px-4 py-2">{{ $payment->receipt->collection_date }}</td>
                             <td class="px-4 py-2">{{ $payment->created_at->format('Y-m-d') }}</td>
                         </tr>
                     @empty
