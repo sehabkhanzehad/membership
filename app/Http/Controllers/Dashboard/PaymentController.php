@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Dashboard;
 
 use App\Enums\Month;
@@ -49,12 +50,12 @@ class PaymentController extends Controller
     }
 
 
-    public function collector () {
-    return view('dashboard.collect', [
-        "members" => User::whereRole(UserRole::Member)->get(),
-        "years" => Year::all(),
-        "months" => Month::values(),
+    public function collector()
+    {
+        return view('dashboard.collect', [
+            "members" => User::whereRole(UserRole::Member)->get(),
+            "years" => Year::all(),
+            "months" => Month::values(),
         ]);
     }
-
 }
