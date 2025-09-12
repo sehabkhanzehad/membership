@@ -36,10 +36,16 @@
                             class="block rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Profile</a>
                         <a href="#"
                             class="block rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Settings</a>
-                        <div class="my-1 border-t border-gray-100"></div>
-                        <a href="signin.html"
-                            class="block rounded-lg px-3 py-2 text-sm text-red-600 hover:bg-red-50">Sign
-                            out</a>
+
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit"
+                                class="w-full text-left  rounded-lg px-3 py-2 text-sm text-red-600 hover:bg-red-50 hover:text-red-700">
+                                Sign Out
+                            </button>
+                        </form>
+
+
                     </div>
                 </div>
             </div>

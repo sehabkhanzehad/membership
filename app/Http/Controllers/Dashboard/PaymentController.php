@@ -1,10 +1,12 @@
 <?php
-
 namespace App\Http\Controllers\Dashboard;
 
 use App\Enums\Month;
+use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
+use App\Models\User;
+use App\Models\Year;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -45,4 +47,14 @@ class PaymentController extends Controller
         }
         return redirect()->back()->with('success', 'Payment recorded successfully');
     }
+
+
+    public function collector () {
+    return view('dashboard.collect', [
+        "members" => User::whereRole(UserRole::Member)->get(),
+        "years" => Year::all(),
+        "months" => Month::values(),
+        ]);
+    }
+
 }
