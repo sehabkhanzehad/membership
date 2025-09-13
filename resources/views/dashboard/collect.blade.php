@@ -29,7 +29,7 @@
                             class="text-red-700">*</span></label>
                     <input type="date" required name="collection_date"
                         class="w-full rounded-lg border border-gray-300 focus:ring-emerald-400 focus:border-emerald-400 px-3 py-2 transition"
-                        value="{{ old('collection_at', now()->toDateString()) }}">
+                        value="{{ old('collection_date', now()->toDateString()) }}">
                     @error('collection_date')
                         <div class="text-red-600 text-xs mt-1">{{ $message }}</div>
                     @enderror
@@ -94,6 +94,7 @@
                                 </label>
                             @endforeach
                         </div>
+
                         @error('month')
                             <div class="text-red-600 text-xs mt-1">{{ $message }}</div>
                         @enderror

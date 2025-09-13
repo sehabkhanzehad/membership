@@ -35,7 +35,6 @@ class PaymentController extends Controller
             'user_id' => $validated['user_id'],
             'total_amount' => $validated['amount'],
             'collection_date' => $validated['collection_date'],
-
         ]);
 
         foreach ($validated['month'] as $month) {
@@ -45,7 +44,8 @@ class PaymentController extends Controller
                 'year_id' => $validated['year_id'],
                 'month' => $month,
                 'amount' => $validated['amount'] / count($validated['month']),
-                'collected_by' => 2, // todo: change to auth user id
+                'collected_by' => 2,
+                'paid_at' => $validated['collection_date'],
             ]);
         }
 
