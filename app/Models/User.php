@@ -43,6 +43,12 @@ class User extends Authenticatable
         return $this->hasMany(Receipt::class);
     }
 
+
+    public function firstReceipt()
+    {
+        return $this->hasOne(Receipt::class)->oldestOfMany();
+    }
+
     public function payments()
     {
         return $this->hasMany(Payment::class, 'user_id', 'id');

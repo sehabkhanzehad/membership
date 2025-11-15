@@ -17,4 +17,10 @@ class Receipt extends Model
     {
         return $this->hasMany(Payment::class);
     }
+
+    public function totalPayments()
+    {
+        return $this->payments()->sum('amount');
+    }
 }
+
